@@ -25,8 +25,9 @@ class CipheredGUI (BasicGUI) :
 	def decrypt () :
 	def send () :
 	def recv () :
+            
 
-
+ 
 class BasicGUI:
     """
     GUI for a chat client. Not so secured.
