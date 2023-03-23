@@ -1,6 +1,6 @@
 import logging 
 
-import basic_gui import BasicGUI, DEFAULT8VALUES
+from basic_gui import BasicGUI, DEFAULT_VALUES
 
 import dearpygui.dearpygui as dpg
 
@@ -10,18 +10,21 @@ from generic_callback import GenericCallback
 
 
 class CipheredGUI (BasicGUI) : 
-	""" Classe deriv� de la classe BasicGUI """
+	""" 
+    Classe derivé de la classe BasicGUI
+    GUI pour un chat client.
+    Sécurisé avec l'encrytion AES(CTR) 
+    """
 	def __init__(self)-> None :
-		#Surcharge du constructeur 
-        super().init()
-		self.key = None 
+            super().init()
+            self.key = None 
 
-	def create_connection_window ()
-	def run_chat ()
-	def encrypt ()
-	def decrypt ()
-	def send ()
-	def recv ()
+	def create_connection_window () :
+	def run_chat () :
+	def encrypt () :
+	def decrypt () :
+	def send () :
+	def recv () :
 
 
 class BasicGUI:
