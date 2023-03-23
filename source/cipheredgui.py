@@ -16,9 +16,11 @@ class CipheredGUI (BasicGUI) :
     Sécurisé avec l'encrytion AES(CTR) 
     """
 	def __init__(self)-> None :
+            #Surcharge du constructeur 
             super().init()
             self.key = None 
-
+            
+            
     def create_connection_window () :
 	def run_chat () :
 	def encrypt () :
