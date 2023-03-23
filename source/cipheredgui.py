@@ -19,7 +19,7 @@ class CipheredGUI (BasicGUI) :
             super().init()
             self.key = None 
 
-	def create_connection_window () :
+    def create_connection_window () :
 	def run_chat () :
 	def encrypt () :
 	def decrypt () :
