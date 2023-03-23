@@ -10,9 +10,10 @@ from generic_callback import GenericCallback
 
 
 class CipheredGUI (BasicGUI) : 
-	""" Classe derivé de la classe BasicGUI """
-	def __init__(self)->None :
+	""" Classe derivï¿½ de la classe BasicGUI """
+	def __init__(self)-> None :
 		#Surcharge du constructeur 
+        super().init()
 		self.key = None 
 
 	def create_connection_window ()
