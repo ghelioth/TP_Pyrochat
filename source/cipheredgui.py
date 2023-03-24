@@ -37,7 +37,7 @@ class CipheredGUI (BasicGUI):
             
             # Ajout d'un champ pour la saisie du mot de passe 
             with dpg.group(horizontal = True) :
-                dpg.add_text("pswd")
+                dpg.add_text(" pwd")
                 dpg.add_input_text(password = True, tag = "connection_password")
 
             dpg.add_button(label="Connect", callback=self.run_chat)
