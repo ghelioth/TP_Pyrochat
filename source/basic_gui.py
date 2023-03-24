@@ -9,7 +9,7 @@ from generic_callback import GenericCallback
 DEFAULT_VALUES = {
     "host" : "127.0.0.1",
     "port" : "6666",
-    "name" : "foo"
+    "name" : "Helioth"
 }
 
 class BasicGUI:
