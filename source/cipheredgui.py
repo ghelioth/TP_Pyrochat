@@ -21,7 +21,7 @@ class CipheredGUI (BasicGUI):
     """
     def __init__(self)->None:
             #Surcharge du constructeur 
-            super().init()
+            super().__init__()
             self.key = None
 
 
