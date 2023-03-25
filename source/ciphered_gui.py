@@ -1,4 +1,5 @@
 import logging 
+import os
 
 from basic_gui import BasicGUI, DEFAULT_VALUES
 
@@ -76,16 +77,14 @@ class CipheredGUI (BasicGUI):
     def encrypt (self, message : str) -> tuple :
         # chiffre le message avec l'encryption AES(CTR)
 
-        gh = algorithms.AES.block_size//8
-        gh = default_backend().random_bytes(gh)
-
+        gh = os.urandom(16)
         hw = Cipher(algorithms.AES(self.key), modes.CTR(gh), backend = default_backend())
         encrytion = hw.encryptor()
 
-        pad = padding.PKCS7(algorithms.AES.block_size).padder()
+        pad = padding.PKCS7(128).padder()
 
         pad_d = pad.update(message.encode()) + pad.finalize()
-        hw_txt = encrytion.update(pad_d) * encrytion.finalize()
+        hw_txt = encrytion.update(pad_d) + encrytion.finalize()
 
         return gh, hw_txt
     
@@ -116,7 +115,7 @@ class CipheredGUI (BasicGUI):
         # Surcharge de la fonction send()
         # Chiffrement du message avant de l'envoyer au serveur 
         message_chiffre = self.encrypt(text)
-        super().send_message(message_chiffre)
+        super().send(message_chiffre)
 
 
     def _create_chat_window(self)->None:
