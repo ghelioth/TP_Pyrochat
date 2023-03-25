@@ -26,6 +26,8 @@ class CipheredGUI (BasicGUI):
 
 
 
+
+
     def _create_connection_window(self)->None:
         # windows about connexion
         with dpg.window(label="Connection", pos=(200, 150), width=400, height=300, show=False, tag="connection_windows"):
