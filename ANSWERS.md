@@ -35,3 +35,24 @@ Les problèmes sont :
 
 2- Pour résoudre ce problème une solution serait de chiffrer les messages envoyés avant de les enrégiqter sur les logs. 
  
+
+
+## Partie Chiffrement 
+
+# Question 1  
+
+Non, urandom n'est pas un bon choix pour de la cryptographie. 
+Parce qu'il utilise un générateur de nombres pseudo-aléatoires pouvant être predit dans certaines circonstances
+
+# Question 2 
+
+Utiliser ses primitives cryptographiques peut être dangereux car l'utilisation des mauvaises primitives cryptographiques peut conduire à des failles de sécurité et à des attaques.
+
+
+# Question 3
+
+Un serveur malveillant peut encore nous nuire malgrè le chiffrement parce que l'authentification des utilisateurs n'est pas implémenté.. Si le serveur est compromis par exemple, on ne pourrait pas être sûr de communiquer avec la bonne personne ou le message pourrait être intercepté par un tiers et l'altérer.
+
+# Question 4
+
+La propriété qui manque c'est l'authentification de l'entité avec laquelle on communique
