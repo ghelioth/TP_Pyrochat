@@ -91,7 +91,7 @@ class CipheredGUI (BasicGUI):
     def decrypt (self, message : tuple) -> str :
         # Déchiffrage du message avec l'encryption AES(CTR)
         gh, hw_txt = message
-        gw = Cipher(algorithms.AES(self._key), modes.CTR(gh), backend = default_backend())
+        gw = Cipher(algorithms.AES(self.key), modes.CTR(gh), backend = default_backend())
         decryptage = gw.decryptor()
         u_pad = padding.PKCS7(algorithms.AES.block_size).unpadder()
 
