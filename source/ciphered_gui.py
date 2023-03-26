@@ -1,5 +1,6 @@
 import logging 
 import os
+import base64
 
 from basic_gui import BasicGUI, DEFAULT_VALUES
 
@@ -78,7 +79,8 @@ class CipheredGUI (BasicGUI):
         # chiffre le message avec l'encryption AES(CTR)
 
         gh = os.urandom(16)
-        hw = Cipher(algorithms.AES(self.key), modes.CTR(gh), backend = default_backend())
+        gh_bytes = bytes(gh)
+        hw = Cipher(algorithms.AES(self.key), modes.CTR(gh_bytes), backend = default_backend())
         encrytion = hw.encryptor()
 
         pad = padding.PKCS7(128).padder()
@@ -90,7 +92,10 @@ class CipheredGUI (BasicGUI):
     
     def decrypt (self, message : tuple) -> str :
         # Déchiffrage du message avec l'encryption AES(CTR)
-        gh, hw_txt = message
+        # Recuperation de gh et du message en base64
+        gh = base64.b64decode(message[0]['data'])
+        hw_txt = base64.b64decode(message[1]['data'])
+
         gw = Cipher(algorithms.AES(self.key), modes.CTR(gh), backend = default_backend())
         decryptage = gw.decryptor()
         u_pad = padding.PKCS7(algorithms.AES.block_size).unpadder()
