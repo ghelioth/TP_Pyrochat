@@ -55,4 +55,30 @@ Un serveur malveillant peut encore nous nuire malgrè le chiffrement parce que l
 
 # Question 4
 
-La propriété qui manque c'est l'authentification de l'entité avec laquelle on communique
+La propriété qui manque c'est l'authentification de l'entité avec laquelle on communique.
+
+
+## Authentificated Symetric Encryption 
+
+
+
+
+
+
+## TTL
+
+# Question 1
+
+Oui, il y a une différence avec le chapitre précédent car ici nous utilisons la bibliothèque Fernet pour chiffrer et déchiffrer les messages avec l'addition d'un timestamp pour créer une validation temporelle.
+
+# Question 2
+
+Si on soustrait 45 au temps lors de l'émission, alors à la réception, la fonction decrypt_at_time soulèvera l'exception InvalidToken car le jeton aura expiré. Cela se produit car le temps utilisé lors du chiffrement sera plus petit que le temps utilisé lors du déchiffrement et le délai de TTL sera dépassé, donnant un erreur qui indique que le jeton est invalide/en retard.
+
+# Question 3 
+
+Cela peut être efficace pour protéger contre l'attaque précédente car la validation temporelle garantit que les messages ne peuvent pas être réutilisés après un certain délai. Cependant, cela ne protège pas contre toutes les attaques possibles.
+
+# Question 4 
+
+Cette solution peut rencontrer certaines limites dans la pratique, comme les problèmes de synchronisation des horloges entre les différents serveurs et clients. Si les horloges ne sont pas synchronisées correctement, cela peut conduire à des erreurs de validation temporelle. De plus, le délai de TTL fixe peut être contraignant dans des situations où les messages doivent être stockés pendant des périodes plus longues.
