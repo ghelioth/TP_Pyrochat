@@ -49,9 +49,6 @@ class FernetGUI (CipheredGUI):
             dpg.show_item("chat_windows")
             dpg.set_value("screen", "Connecting")
 
-            # sha256().digest()
-            self.key = hashlib.sha256(password.encode()).digest()
-            self.key = base64.b64decode(self.key)
 
     
     def encrypt(self, message:str)->bytes:
