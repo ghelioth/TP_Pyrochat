@@ -37,7 +37,7 @@ class FernetGUI (CipheredGUI):
             hash_digest = hashes.Hash(hashes.SHA256(), backend=default_backend())
             hash_digest.update(password.encode())
             hash_value = hash_digest.finalize()
-            self.key = base64.urlsafe_b64encode(hash_value)
+            self.key = base64.b64encode(hash_value)
 
             self._callback = GenericCallback()
 
