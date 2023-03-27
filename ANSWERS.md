@@ -60,7 +60,16 @@ La propriété qui manque c'est l'authentification de l'entité avec laquelle on
 
 ## Authentificated Symetric Encryption 
 
+# Question 1
 
+
+# Question 2
+
+
+# Question 3
+
+
+# Question 4
 
 
 
