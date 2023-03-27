@@ -1,17 +1,18 @@
 import logging 
-import os 
 import base64
-from basic_gui import BasicGUI, DEFAULT_VALUES
+
+
 from ciphered_gui import CipheredGUI
 import dearpygui.dearpygui as dpg
 
 from chat_client import ChatClient
 from generic_callback import GenericCallback
+
 from cryptography.fernet import Fernet
+
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.backends import default_backend
 
-import hashlib
 
 
 
