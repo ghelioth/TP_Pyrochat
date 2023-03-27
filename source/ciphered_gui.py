@@ -14,6 +14,10 @@ from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 
+# Variables
+taille_bloc = 128
+nb_itteration = 10000
+octets = 16
 
     
 class CipheredGUI (BasicGUI):
@@ -61,8 +65,9 @@ class CipheredGUI (BasicGUI):
         self._log.info(f"Connecting {name}@{host}:{port}")
         
         # Dérivation de la clef (self.key)
-        salt = b'Helioth' # utilisation d'un random salt
-        kdf = PBKDF2HMAC(algorithm = hashes.SHA256(), length = 32, salt = salt, iterations = 10000, backend = default_backend())
+        salt = b'Helioth' # utilisation de Helioth comme salt constant hihi
+
+        kdf = PBKDF2HMAC(algorithm = hashes.SHA256(), length = 32, salt = salt, iterations = nb_itteration, backend = default_backend())
         self.key = kdf.derive(password.encode())
 
         self._callback = GenericCallback()
@@ -78,12 +83,12 @@ class CipheredGUI (BasicGUI):
     def encrypt (self, message : str) -> tuple :
         # chiffre le message avec l'encryption AES(CTR)
 
-        gh = os.urandom(16)
+        gh = os.urandom(octets)
         gh_bytes = bytes(gh)
         hw = Cipher(algorithms.AES(self.key), modes.CTR(gh_bytes), backend = default_backend())
         encrytion = hw.encryptor()
-
-        pad = padding.PKCS7(128).padder()
+        
+        pad = padding.PKCS7(taille_bloc).padder()
 
         pad_d = pad.update(message.encode()) + pad.finalize()
         hw_txt = encrytion.update(pad_d) + encrytion.finalize()

@@ -13,6 +13,9 @@ from cryptography.hazmat.backends import default_backend
 
 import hashlib
 
+
+
+
 class FernetGUI (CipheredGUI):
     """
     Classe dérivé de CipheredGUI

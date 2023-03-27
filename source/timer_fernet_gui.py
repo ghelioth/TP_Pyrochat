@@ -1,5 +1,4 @@
 import logging
-import base64
 
 from fernet_gui import FernetGUI
 
@@ -9,7 +8,6 @@ from fernet_gui import FernetGUI
 from cryptography.fernet import Fernet
 from cryptography.fernet import InvalidToken
 
-import hashlib
 import time
 
 TTL = 30

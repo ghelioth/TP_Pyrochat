@@ -23,7 +23,7 @@ Dans les logs nous reamrquons que :
 
 Les problèmes sont :
 
-1- Les callback handlers des utilisateurs n'ont pas été déconnectés du serveur même après la fin de la conversation => Cela viole le principe de la gestion des ressources. Si plusieurs (voir des dizaines ou centaines) utilisateurs enregistrent leur callback handler sans se déconnecter, le serveur risque de surcharger et crasher.
+1- Les callback handlers des utilisateurs n'ont pas été déconnectés du serveur même après la fin de la conversation => Cela viole le principe de la gestion des ressources. Si plusieurs (voir des dizaines ou centaines) utilisateurs s'enregistrent leur callback handler sans se déconnecter, le serveur risque de surcharger et crasher.
 
 2- Les messsages sont enrégister en clair sur les logs, n'importe qui ayant accès aux logs peut voir le contenu des échanges entre les diférents clients connectés => Le principe de confidentialité des échanges est violé.
 
@@ -63,13 +63,16 @@ La propriété qui manque c'est l'authentification de l'entité avec laquelle on
 # Question 1
 
 
+Fernet est moins risqué car il est basé sur un algorithme de chiffrement symétrique AES et a une implémentation plus simple que le précédent chapitre qui utilisait une cryptographie asymétrique plus complexe.
+
 # Question 2
 
+C'est le replay attack.
 
 # Question 3
 
+Une méthode simple pour éviter cela est d'utiliser des jetons de sessions uniques ou des horodatages pour s'ssurer que les messages ne peuvent être rejoués.
 
-# Question 4
 
 
 
@@ -90,3 +93,13 @@ Cela peut être efficace pour protéger contre l'attaque précédente car la val
 # Question 4 
 
 Cette solution peut rencontrer certaines limites dans la pratique, comme les problèmes de synchronisation des horloges entre les différents serveurs et clients. Si les horloges ne sont pas synchronisées correctement, cela peut conduire à des erreurs de validation temporelle. De plus, le délai de TTL fixe peut être contraignant dans des situations où les messages doivent être stockés pendant des périodes plus longues.
+
+
+
+## Redard critique 
+
+Le fait d'avoir décidé arbitrairement d'utiliser certaines bibliothèques tiers et pris des raccourcis augmente la possibilité que cerataines vulnérabilités subsistent dans le code.
+
+Par exemple l'utilisation des bibliothèques tiers peut être risquée, car ces bibliothèques peuvent avoir des failles de sécurité que les gens malveillants pourront utiliser. Il serait nécessaire de vérifier et de façon régulière que ces bibliothèques ont été mis à jour avec les correctifs de sécurité. Quant au raccourcis pris, il pourrait y avoir des vérifications de sécurité importantes qui ont été oubliées et par arpport aux décisions arbitraires, on a pu oublié d'implementer une fonctionnalité de sécurité importante en les prenant.
+
+Il sera donc nécessaire d'examiner avec plus d'attention le code et de manière approfondie et de mener des tests de sécurité réguliers 
