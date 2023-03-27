@@ -73,7 +73,6 @@ La propriété qui manque c'est l'authentification de l'entité avec laquelle on
 
 
 
-
 ## TTL
 
 # Question 1
