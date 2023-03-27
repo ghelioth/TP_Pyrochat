@@ -71,7 +71,7 @@ class FernetGUI (CipheredGUI):
         f = Fernet(self.key)
 
         # Déchiffrement du message avec Fernet
-        decrypted_message = f.decrypt(bytes(message, 'utf-8'))
+        decrypted_message = f.decrypt(str(message, 'utf-8'))
 
         return decrypted_message.decode()
     
